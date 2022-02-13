@@ -98,9 +98,7 @@ function logout() {
 }
 
 function playDoorBellDingDongSound() {
-  window.onload = function () {
     document.getElementById("myAudio").play();
-  };
 }
 //---
 function execc(html) {
