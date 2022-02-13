@@ -1,0 +1,142 @@
+<!--CodeSend devtools
+2021 Thu,Aug 19
+CodeSend by Aarav Vashist-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title id="title">AWESOME CHATTING!!!!</title>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <!---->
+    <link rel="stylesheet" href="AaravStyle.css" />
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+      h6 {
+        text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb,
+          0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1),
+          0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3),
+          0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25),
+          0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
+      }
+    </style>
+    <script></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <button
+        id="logout"
+        onclick="logout();"
+        class="glyphicon glyphicon-log-out btn btn-danger"
+      >
+        Logout
+      </button>
+      <center>
+        <section id="top"></section>
+        <h1 class="header">AWESOME CHATTING!!!!</h1>
+        <br />
+        <div id="output" style="text-align: left; margin-bottom: 70px"></div>
+      </center>
+    </div>
+    <br /><br /><br />
+    <center>
+      <div class="input_div_message_page">
+        <label>Send: </label>
+        <div class="autocomplete">
+          <div class="ui-widget">
+            <div
+              id="msg"
+              width="20px"
+              style="margin: 20px"
+              class="form-control"
+              name="edit"
+              placeholder="SEND TEXT!!!"
+              contenteditable="true"
+                      ></div>
+          </div>
+        </div>
+        <div
+          class="btn-group"
+          role="group"
+          aria-label="Basic mixed styles example"
+        >
+          <button onclick="send()" class="btn btn-success">SEND!!!!</button>
+          <button type="button" class="btn btn-info" onclick="execc('<strong>B</strong>')"><strong>B</strong></button>
+          <button type="button" class="btn btn-info" onclick="execc('<i>I</i>')"><i>I</i></button>
+          <button type="button" class="btn btn-info" onclick="execc('<u>I</u>')"><u>U</u></button>
+          <button type="button" class="btn btn-info" onclick="execimg(prompt('LINK:'))"><i class="fa-solid fa-image"></i></button>
+          <button type="button" class="btn btn-info" onclick="execfcol(prompt('COLOR:'))">
+            <i class="fa-solid fa-droplet"></i>
+          </button>
+          <button type="button" class="btn btn-info" onclick="execbcol(prompt('COLOR:'))">
+            <i class="fa-solid fa-fill"></i>
+          </button>
+          <button type="button" class="btn btn-info" onclick="execlink(prompt('LINK:'))">
+            <i class="fa-solid fa-link"></i>
+          </button>
+        </div>
+        <div
+          class="btn-group"
+          role="group"
+          aria-label="Basic mixed styles example"
+        >
+        <button type="button" class="btn btn-info" onclick="execc('<h1>h1</h1>')">H1</button>
+        <button type="button" class="btn btn-info" onclick="execc('<h2>h2</h2>')">H2</button>
+        <button type="button" class="btn btn-info" onclick="execc('<h3>h3</h3>')">H3</button>
+        <button type="button" class="btn btn-info" onclick="execc('<h4>h4</h4>')">H4</button>
+        <button type="button" class="btn btn-info" onclick="execc('<h5>h5</h5>')">H5</button>
+        <button type="button" class="btn btn-info" onclick="execc('<p>p</p>')">P</button>
+        </div>
+      </div>
+      <section id="down"></section>
+    </center>
+    <audio
+      id="myAudio"
+      src="https://vashistaarav1611.github.io/CodeSend6/mixkit-home-standard-ding-dong-109.wav"
+    ></audio>
+    <script src="kwitter_page.js"></script>
+  </body>
+</html>
